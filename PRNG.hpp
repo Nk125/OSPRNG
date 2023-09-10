@@ -7,6 +7,10 @@
 #elif defined(PRNG_UNIX)
     #include <cstdio>
 
+    #ifndef PRNG_UNIX_URANDOM
+        #define PRNG_UNIX_URANDOM 1
+    #endif
+
     #if !PRNG_UNIX_URANDOM
         #define PRNG_UNIX_RANDOM_DEVICE "/dev/random"
     #else

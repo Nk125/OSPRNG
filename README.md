@@ -70,6 +70,13 @@ Now with CMake Options:
     target_link_libraries(myexe PRIVATE OS::PRNG)
     ```
 
+    In your cpp file:
+
+    ```cpp
+    // Ready to use
+    #include <PRNG.hpp>
+    ```
+
 * Standalone header
 
     Start by setting the options above (OS to be working on) and then just

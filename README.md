@@ -45,3 +45,48 @@ Now with CMake Options:
 * `PRNG_COMPILE_TEST`
 
     Compiles the test that shows an example byte vector of 32 bytes and a table of integer values got from the PRNG
+
+## How to use
+
+* In CMake
+
+    Simply download the lib and then link like this:
+
+    ```cmake
+    include(FetchContent)
+
+    FetchContent_Declare(
+        Nk125PRNG
+        GIT_REPOSITORY "https://github.com/Nk125/OSPRNG"
+        GIT_TAG "main"
+    )
+
+    FetchContent_MakeAvailable(Nk125PRNG)
+
+    target_link_libraries(myexe PRIVATE osprng)
+
+    # OR
+
+    target_link_libraries(myexe PRIVATE OS::PRNG)
+    ```
+
+* Standalone header
+
+    Start by setting the options above (OS to be working on) and then just
+
+    ```cpp
+    // Assuming you're on Unix
+    #define PRNG_UNIX
+    #define PRNG_UNIX_URANDOM true
+    // or in Windows
+    #define PRNG_WINDOWS
+    // or you want to use OpenSSL
+    #define PRNG_OPENSSL
+    // or you want to use <random> header
+    #define PRNG_STD
+
+    // Assuming you added to include path
+    #include <PRNG.hpp>
+    // or
+    #include "PRNG.hpp"
+    ```

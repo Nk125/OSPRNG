@@ -50,7 +50,7 @@ public:
         RAND_bytes(&rBytes[0], static_cast<int>(size));
         #elif defined(PRNG_UNIX)
         OpenRandomDevice();
-        ReadRandomDevice(reinterpret_cast<void*>(&rBytes[0]), sizeof(unsigned char), size);
+        ReadRandomDevice(&rBytes[0], sizeof(unsigned char), size);
         CloseRandomDevice();
         #elif defined(PRNG_WINDOWS)
         BCryptGenRandom(NULL, &rBytes[0], size, BCRYPT_USE_SYSTEM_PREFERRED_RNG);
@@ -71,7 +71,7 @@ public:
         RAND_bytes(reinterpret_cast<unsigned char*>(&myInteger), sizeof(T));
         #elif defined(PRNG_UNIX)
         OpenRandomDevice();
-        ReadRandomDevice(reinterpret_cast<void*>(&myInteger), sizeof(T), 1);
+        ReadRandomDevice(&myInteger, sizeof(T), 1);
         CloseRandomDevice();
         #elif defined(PRNG_WINDOWS)
         BCryptGenRandom(NULL, reinterpret_cast<unsigned char*>(&myInteger), sizeof(T), BCRYPT_USE_SYSTEM_PREFERRED_RNG);

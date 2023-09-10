@@ -38,11 +38,15 @@ Inside the .hpp file, the options are the next:
 
 Now with CMake Options:
 
-* `PRNG_USE_OPENSSL`
+* `PRNG_USE_OPENSSL` (Default: false)
 
     Enable OpenSSL to be used as PRNG, described above, if OpenSSL isn't found in the system, search for the OS provided PRNG
 
-* `PRNG_COMPILE_TEST`
+* `PRNG_USE_URANDOM` (Only for **Unix**, Default: true)
+
+    If set to true, enable /dev/urandom, else use /dev/random
+
+* `PRNG_COMPILE_TEST` (Default: false)
 
     Compiles the test that shows an example byte vector of 32 bytes and a table of integer values got from the PRNG
 
